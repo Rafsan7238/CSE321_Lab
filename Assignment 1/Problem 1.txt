@@ -9,6 +9,3 @@ ls *.txt
 grep apple file1 file2 file3 file4
 
 chmod a+rx file1
-
-
-
