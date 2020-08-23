@@ -1,0 +1,14 @@
+rm -r /CSE321/*
+
+ls
+
+ls *.txt
+
+"Let the given string is 'apple'"
+
+grep apple file1 file2 file3 file4
+
+chmod a+rx file1
+
+
+
