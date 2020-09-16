@@ -33,6 +33,7 @@ public class SJF {
 		
 		int total_turn_time = 0;
 		int total_wait_time = 0;
+		int total_response_time = 0;
 		
 		Process p1 = new Process("p1",8,0);
 		Process p2 = new Process("p2",4,1);
@@ -52,7 +53,9 @@ public class SJF {
 			Process process = pQ.poll(); // head of queue has least remaining burst time
 			
 			if(process.start_time == -1) {
-				process.start_time = time;  
+				process.start_time = time; 
+				process.response_time = process.start_time - process.arr_time;
+				total_response_time += process.response_time;
 			}
 			
 			time += process.burst_time;
@@ -71,10 +74,10 @@ public class SJF {
 		int n = plist.size();
 		
 		for(int i = 0; i < n; i++) {
-			System.out.println("Process: " + plist.get(i).id +"; CT: " + plist.get(i).fin_time + "; TAT: " + plist.get(i).turn_time + "; WT: " + plist.get(i).wait_time + "\n");
+			System.out.println("Process: " + plist.get(i).id + "; ST: " + plist.get(i).start_time + "; RT: " + plist.get(i).response_time + "; CT: " + plist.get(i).fin_time + "; TAT: " + plist.get(i).turn_time + "; WT: " + plist.get(i).wait_time + "\n");
 		}
 		
-		System.out.println("Average TAT: " + (total_turn_time / n) + "; Average WT: " + (total_wait_time/n));
+		System.out.println("Average RT: " + (total_response_time / n) + "; Average TAT: " + (total_turn_time / n) + "; Average WT: " + (total_wait_time/n));
 
 	}
 }
