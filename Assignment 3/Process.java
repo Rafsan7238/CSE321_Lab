@@ -7,6 +7,7 @@ public class Process {
 	public int rem_burst_time;
 	public int arr_time;
 	public int start_time = -1;
+	public int response_time;
 	public int fin_time;
 	public int wait_time;
 	public int turn_time;
